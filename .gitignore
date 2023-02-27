@@ -1,1 +1,4 @@
 /.idea/
+/src/configurations/credentials.cfg
+/src/configurations/dwh.cfg
+/src/configurations/redshift.cfg
