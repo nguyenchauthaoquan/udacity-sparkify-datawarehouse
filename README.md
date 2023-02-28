@@ -43,6 +43,7 @@ We have two staging tables which copy the several JSON files inside the S3 bucke
 - staging_events: the staging table which indicates the actions done by users (which song are listening, etc.. ), include the data from log data
 
 ```plantuml
+@startuml
 entity "staging_events" as staging_events {
     artist: VARCHAR(255),
     auth: VARCHAR(255),
@@ -63,10 +64,12 @@ entity "staging_events" as staging_events {
     userAgent: VARCHAR(255),
     userId: INTEGER
 }
+@enduml
 ```
 - staging_songs: the staging table which indicates the information of songs and artists, includes the song data
 
 ```plantuml
+@startuml
 entity "staging_songs" as staging_songs {
     artist_id: VARCHAR(255),
     artist_latitude: FLOAT,
@@ -79,10 +82,13 @@ entity "staging_songs" as staging_songs {
     title: VARCHAR(255),
     year: INTEGER
 }
+@enduml
 ```
 #### Fact table
 songplays - records in event data associated with song plays i.e. records with page NextSong
+
 ```plantuml
+@startuml
 entity "songplays" as songplays {
     songplay_id: INTEGER <<auto incremental>> <<DISTKEY>> <<SORTKEY>> <<PK>>,
     start_time: TIMESTAMP NOT NULL <<SORTKEY>> <<FK>>,
@@ -94,11 +100,12 @@ entity "songplays" as songplays {
     location VARCHAR(255),
     user_agent VARCHAR(255)
 }
-
+@enduml
 ```
 #### Dimension tables
 - users - users in the app
 ```plantuml
+@startuml
 entity "users" as users {
     user_id: INTEGER NOT NULL <<DISTKEY>> <<SORTKEY>> <<PK>>, 
     first_name: VARCHAR(255) NOT NULL,
@@ -106,9 +113,11 @@ entity "users" as users {
     gender: CHAR(1) NOT NULL, 
     level: VARCHAR(255) NOT NULL
 }
+@enduml
 ```
 - songs - songs in music database
 ```plantuml
+@startuml
 entity "songs" as songs {
      song_id: VARCHAR(255) NOT NULL <<DISTKEY>> <<SORTKEY>> <<PK>>,
      title: VARCHAR(255) NOT NULL,
@@ -116,9 +125,11 @@ entity "songs" as songs {
      year: VARCHAR(255) NOT NULL,
      duration: FLOAT
 }
+@enduml
 ```
 - artists - artists in music database
 ```plantuml
+@startuml
 entity "artists" as artists {
     artist_id: VARCHAR(255) NOT NULL <<DISTKEY>> <<SORTKEY>> <<PK>>,
     name: VARCHAR(255) NOT NULL,
@@ -126,9 +137,11 @@ entity "artists" as artists {
     latitude: FLOAT,
     longitude: FLOAT
 }
+@enduml
 ```
 - time - timestamps of records in songplays broken down into specific units
 ```plantuml
+@startuml
 entity "time" as time {
     start_time TIMESTAMP NOT NULL <<DISTKEY>> <<SORTKEY>> <<PK>>, 
     hour INTEGER NOT NULL, 
@@ -138,6 +151,7 @@ entity "time" as time {
     year INTEGER NOT NULL, 
     weekday VARCHAR(20) NOT NULL
 }
+@enduml
 ```
 ### Database Design
 ``` plantuml
