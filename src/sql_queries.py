@@ -195,12 +195,12 @@ WHERE artist_id IS NOT NULL;
 time_table_insert = ("""
 INSERT INTO time (start_time, hour, day, week, month, year, weekday)
 SELECT DISTINCT (sp.start_time) AS start_time,
-                EXTRACT(HOUR from sp.start_time),
-                EXTRACT(DAY from sp.start_time),
-                EXTRACT(WEEK from sp.start_time),
-                EXTRACT(MONTH from sp.start_time),
-                EXTRACT(YEAR from sp.start_time),
-                EXTRACT(WEEKDAY from sp.start_time)
+       EXTRACT(HOUR from sp.start_time),
+       EXTRACT(DAY from sp.start_time),
+       EXTRACT(WEEK from sp.start_time),
+       EXTRACT(MONTH from sp.start_time),
+       EXTRACT(YEAR from sp.start_time),
+       EXTRACT(WEEKDAY from sp.start_time)
 FROM songplays AS sp;
 """)
 
